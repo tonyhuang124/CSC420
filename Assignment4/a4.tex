@@ -1,0 +1,88 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[top=1in,bpttom=1in,left=1.25in,right=1.25in]{geometry}
+\usepackage{bm}
+\usepackage{listings}
+\pagestyle{empty}
+\usepackage{graphicx}
+\usepackage{natbib}
+\usepackage[usenames, dvipsnames]{color}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows}
+\tikzstyle{startstop} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black, fill=red!30]
+
+\title{CSC420-A4}
+\author{Yuheng Huang }
+\date{November 2017}
+
+
+
+\begin{document}
+
+
+\maketitle
+
+\section*{Question 1}
+1.)\\
+    
+    \textcolor{red}{Challenge 1:} Detect tennis ball.\\
+    
+    Training data: tennis ball data,such as color, size, etc...\\
+    
+    \textcolor{red}{Challenge 2:} Navigate itself to tennis ball location.\\
+    
+    Training data: tennis court data and it needs to know where it is, so it may needs some landmark too.\\
+    
+    \textcolor{red}{Challenge 3:} Player and obstacle detection and avoidance.\\
+    
+    Training data: player and obstacle's data so that it can recognize this is obstacles.\\
+    
+    \textcolor{red}{Challenge 4:} Real time localization.\\
+    
+    Training data: landmark, tennis court data\\
+    
+    \textcolor{red}{Challenge 5:} Delivery tennis balls back to servers.\\
+    
+    Training data: landmark, tennis court data, servers location data.\\[5mm]
+2.)\\
+
+\begin{tikzpicture}[node distance=2cm]
+
+\node (cannyEdgeDetection) [startstop] {Use cannyEdgeDetection to find the shape of the court};
+
+\node (buildcoor) [startstop,below of=cannyEdgeDetection] {Use the shape of court to create coordinate system};
+
+\node (orignalpoint) [startstop, below of=buildcoor] {mark ground of left up corner of the court as (0,0,0)}
+
+\node (detectball) [startstop, below of=orignalpoint] {detect ball by using DPM and moveToLocation(ball's location) when ball's Z =0}
+
+\node (obsctalbe) [startstop, below of=detectball] {avoid players and obstacle when moveToLocation(ball's location)}
+
+\node (grab) [startstop, below of=obsctalbe] {grabObjectAtLocation(ball's location)}
+
+\node (back) [startstop, below of=grab] {moveToLocation(servers location)}
+
+\node (fin) [startstop, below of=back] {victoryDanceAtLocation(servers location)}
+
+
+\end{tikzpicture}
+    
+    
+
+    
+
+
+
+
+    
+
+    
+
+
+
+    
+
+
+\end{document}
